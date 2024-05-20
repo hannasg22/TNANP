@@ -50,11 +50,11 @@ $$
 $$ [\frac{\hbar^2}{M}(\frac{d^2}{dr^2}-\frac{6}{r^2})+E+2V_T(r)-V_C(r)]u_d=\sqrt{8}V_T(r)u_s
 $$
 
-These are exactly the equations that our code will try to solve! So, we will **get the two wavefunctions $u_S$ and $u_D$ and the energy eigenvalue** (which, by experimental data, we know it is: $E_B=-2.225 MeV$).
+These are exactly the equations that our code will try to solve! So, we will **get the two wavefunctions $u_s$ and $u_d$ and the energy eigenvalue** (which, by experimental data, we know it is: $E_B=-2.225 MeV$).
 
 Also, we must take into account the initial and boundary conditions we expect this kind of system to follow:
 
-$$u_S(0)=u_D(0)=0, \hspace{0.5cm} u_S(\infty)=u_D(\infty)=0
+$$u_s(0)=u_d(0)=0, \hspace{0.5cm} u_s(\infty)=u_d(\infty)=0
 $$
 
 ### Further details
