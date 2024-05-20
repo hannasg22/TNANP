@@ -2,13 +2,13 @@
 
 ## Goal of the code
 
-Bfriefly explained, this code is provided to solve specifically the deuteron equations and get its eigenfunctions and eigenvalues.
+Briefly explained, this code is provided to solve specifically the deuteron equations and get its eigenfunctions and eigenvalues.
 
-In order to find the results, an specific model for the potentials is implemented. But another option could be applied, making use of the user's preferred election.
+In order to find the results, a specific model for the potentials is implemented. But another option could be applied, making use of the user's preferred election.
 
 ## Theory
 
-With the aim of better understanding what it is done in this code, let us introduce the main theoretical concept.
+With the aim of better understanding what it is done in this code, let us introduce the main theoretical concepts.
 
 ### Main idea
 
