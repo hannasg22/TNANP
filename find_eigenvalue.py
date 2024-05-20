@@ -10,14 +10,13 @@ So, to carry out the integration we make use of the next SciPy function:
 
 import numpy as np
 from scipy.integrate import solve_ivp
-from scipy.optimize import root
 
 import potentials as pot
 import equations as eq
 import get_values as get
 
 
-def error_E(E_guess):
+def error_E_1(E_guess):
     """This function analyses if the result obtained with E_guess
     matches the desired boundary conditions.
 
@@ -31,18 +30,23 @@ def error_E(E_guess):
         error: difference between the final point values with E_guess
                and the actual values we want to achieve
     """
-    
+
+    cut = get.range_of_radius()[1] * 0.9
     # Get the conditions from the data file
     ini_cond = get.initial_conditions()
-    us_fin, ud_fin = get.boundary_conditions()
-    r_range = get.range_of_radius()
-
-    # Solve system for E_guess
-    sol_guess = solve_ivp(lambda r, y: eq.radial_equation(r, y, E_guess),
-                          r_range, ini_cond, method='RK45', max_step=0.01)
+    fin_cond = get.boundary_conditions()
+    r_range1 = [get.range_of_radius()[0], cut]
+    r_range2 = [get.range_of_radius()[1], cut]
     
-    # Difference between solution with E_guess and the boundary condition
-    error_s = sol_guess.y[0][-1] - us_fin
-    error_d = sol_guess.y[2][-1] - ud_fin
+    # Solve system for E_guess ourtwards
+    sol1 = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
+                     r_range1, ini_cond, method='RK45', max_step=0.01)
+    # Solve system for E_guess inwards
+    sol2 = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
+                     r_range2, fin_cond, method='RK45', max_step=0.01)
+     
+    # Result in midpoint "cut"
+    error_s1 = sol1.y[0][-1] - sol2.y[0][-1]
+    error_d1 = sol1.y[2][-1] - sol2.y[2][-1]
     
-    return [error_s, error_d]
+    return error_s, error_d
