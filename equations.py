@@ -37,8 +37,8 @@ def radial_equations(r, y, E):
     
     us, vs, ud, vd = y
     # The 1st derivatives of us and ud
-    dus_dr = vs
-    dud_dr = vd
+    dus = vs
+    dud = vd
     # The 2nd derivatives of eigenfunctions us and ud
     dvs = (M / (h_bar**2)) * (ud * np.sqrt(8) * pot.V_t_squarewell(r)
                               + us * (pot.V_c_squarewell(r) - E))
