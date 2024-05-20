@@ -20,15 +20,13 @@ def error_E_1(E_guess):
     """This function analyses if the result obtained with E_guess
     matches the desired boundary conditions.
 
-    We solve the system of equations with E_guess and compare the
-    result in the final point with the desired boundary conditions
-    us_fin and ud_fin.
+    We solve the system of equations both inwards and outwards with
+    E_guess and compare the results in the midpoint called "cut".
 
     Inputs:
         E_guess: value of energy for which we solve the equations
     Output:
-        error: difference between the final point values with E_guess
-               and the actual values we want to achieve
+        error: difference between the results with E_guess in cut point
     """
 
     cut = get.range_of_radius()[1] * 0.9
