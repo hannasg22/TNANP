@@ -44,7 +44,7 @@ def error_E_1(E_guess):
                      r_range2, fin_cond, method='RK45', max_step=0.01)
      
     # Result in midpoint "cut"
-    error_s1 = sol1.y[0][-1] - sol2.y[0][-1]
-    error_d1 = sol1.y[2][-1] - sol2.y[2][-1]
+    error_s = sol1.y[0][-1] - sol2.y[0][-1]
+    error_d = sol1.y[2][-1] - sol2.y[2][-1]
     
     return error_s, error_d
