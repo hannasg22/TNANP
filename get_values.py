@@ -63,12 +63,16 @@ def boundary_conditions():
     # Open file and read boundary conditions
     with jsonlines.open(file_name, mode='r') as reader:
         for line in reader:
-            if "Boundary condition" in line:
-                bound_cond.append(line)
-
-    us_fin = bound_cond[0]['us_fin']
-    ud_fin = bound_cond[0]['ud_fin']
-    return [us_fin, ud_fin]
+            if "Boundary conditions" in line:
+                if "us_fin" in line:
+                    bound_cond.append(line["us_fin"])
+                if "vs_fin" in line:
+                    bound_cond.append(line["vs_fin"])
+                if "ud_fin" in line:
+                    bound_cond.append(line["ud_fin"])
+                if "vd_fin" in line:
+                    bound_cond.append(line["vd_fin"])
+    return bound_cond
 
 def range_of_radius():
     file_name = "deuteron_values.jsonl"
