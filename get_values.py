@@ -68,7 +68,7 @@ def boundary_conditions():
 
     us_fin = bound_cond[0]['us_fin']
     ud_fin = bound_cond[0]['ud_fin']
-    return us_fin, ud_fin
+    return [us_fin, ud_fin]
 
 def range_of_radius():
     file_name = "deuteron_values.jsonl"
