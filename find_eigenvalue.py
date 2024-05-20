@@ -10,9 +10,10 @@ So, to carry out the integration we make use of the next SciPy function:
 
 import numpy as np
 from scipy.integrate import solve_ivp
+from scipy.optimize import root
 
-import potential as pot
-import schro_equation as eq
+import potentials as pot
+import equations as eq
 import get_values as get
 
 
@@ -43,4 +44,5 @@ def error_E(E_guess):
     # Difference between solution with E_guess and the boundary condition
     error_s = sol_guess.y[0][-1] - us_fin
     error_d = sol_guess.y[2][-1] - ud_fin
-    return error_s, error_d
+    
+    return [error_s, error_d]
