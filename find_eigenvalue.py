@@ -16,7 +16,7 @@ import equations as eq
 import get_values as get
 
 
-def error_E_1(E_guess):
+def error_E(E_guess):
     """This function analyses if the result obtained with E_guess
     matches the desired boundary conditions.
 
