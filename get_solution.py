@@ -4,6 +4,7 @@
 
 import numpy as np
 from scipy.optimize import root_scalar
+from scipy.optimize import root
 from scipy.integrate import solve_ivp
 
 import find_eigenvalue as find
@@ -14,6 +15,16 @@ import get_values as get
 bound_cond = get.boundary_conditions()
 
 # Try to reach the E eigenvalue
+def achieve_E():
+    sol = root(lambda E: find.error_E(E[0]), x0=[-2.0])
+    if sol.success:
+        return sol.x[0]
+    else:
+        raise ValueError("No se encontró una solución")
+ 
+E_final = achieve_E()
+print(f'Value of energy is: {E_final}')
+"""
 sol = root_scalar(find.error_E, method='secant', x0=get.energy_guess())
 E_final = sol.root
 
@@ -23,3 +34,4 @@ print(f"El valor de E que cumple las condiciones de contorno es: {E_final}")
 final = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
                   get.range_of_radius(), get.initial_conditions(),
                   method='RK45', max_step=0.01)
+"""
