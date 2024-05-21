@@ -17,10 +17,10 @@ import get_values as get
 
 
 def error_E(E_guess):
-    """This function analyses if the result obtained with E_guess
-    matches the desired boundary conditions.
+    """This function analyses if the results obtained with E_guess
+    matche the desired boundary conditions.
 
-    We solve the system of equations both inwards and outwards with
+    We solve the system of equations both forwards and backwards with
     E_guess and compare the results in the midpoint called "cut".
 
     Inputs:
@@ -29,21 +29,23 @@ def error_E(E_guess):
         error: difference between the results with E_guess in cut point
     """
 
+    # Define the midpoint
     cut = get.range_of_radius()[1] * 0.9
     # Get the conditions from the data file
     ini_cond = get.initial_conditions()
     fin_cond = get.boundary_conditions()
+    # Ranges for the forward and backward integration
     r_range1 = [get.range_of_radius()[0], cut]
     r_range2 = [get.range_of_radius()[1], cut]
     
-    # Solve system for E_guess ourtwards
+    # Solve system for E_guess forwards
     sol1 = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
                      r_range1, ini_cond, method='RK45', max_step=0.01)
-    # Solve system for E_guess inwards
+    # Solve system for E_guess backwards
     sol2 = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
                      r_range2, fin_cond, method='RK45', max_step=0.01)
      
-    # Result in midpoint "cut"
+    # Result in midpoint "cut" for us, vs, ud, vd
     error_us = sol1.y[0][-1] - sol2.y[0][-1]
     error_vs = sol1.y[1][-1] - sol2.y[1][-1]
     error_ud = sol1.y[2][-1] - sol2.y[2][-1]
