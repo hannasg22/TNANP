@@ -13,7 +13,7 @@ data_deuteron = [
     {"Boundary conditions": "us wavefunction", "us_fin": 0.0, "vs_fin": -0.015},
     {"Boundary conditions": "Derivatives", "ud_fin": 0.0, "vd_fin": -0.01},
     {"Range of radius": "Range r", "r_initial": 0.25, "r_final": 10.0},
-    {"Energy guess": -1.5}
+    {"Energy guess": -2.1}
 ]
 
 file_name = "deuteron_values.jsonl"
