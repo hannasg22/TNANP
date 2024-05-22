@@ -7,8 +7,8 @@ These values have been chosen due to experimental data.
 
 For further information check README.md section.
 """
+import math
 
-import jsonlines
 import get_values as get
 
 
@@ -47,3 +47,11 @@ def V_t_squarewell(r):
         return -V0_t
     else:
         return 0.0
+
+# POTENTIAL FROM GEZERLIS
+
+def V_C(r):
+    return -47.0 * math.exp(-r/1.18) * 1.18 / r
+
+def V_T(r):
+    return -24.0 * math.exp(-r/1.7) * 1.7 / r
