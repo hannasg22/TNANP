@@ -36,7 +36,7 @@ def secant_method(funcs, E0, E1, tol=1e-6, max_iter=100):
             raise ValueError("/0 divison for secant method")
         
         # New approximation of E value
-        E_new = E1 - f1.sum() / f_prime.sum()
+        E_new = E1 - np.linalg.norm(f1) * dE / np.linalg.norm(f_prime)
         
         # Look for convergence
         if np.abs(E_new - E1) < tol:
