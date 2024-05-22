@@ -8,7 +8,7 @@ point. Also their derivatives must me smooth.
 import numpy as np
 import find_eigenvalue as find
 
-def secant_method_multi(funcs, E0, E1, tol=1e-6, max_iter=100):
+def secant_method(funcs, E0, E1, tol=1e-6, max_iter=100):
     """This function takes functions and uses the secant method to find
     the energy value which gives the root for all of them.
 
@@ -20,7 +20,7 @@ def secant_method_multi(funcs, E0, E1, tol=1e-6, max_iter=100):
         - Energy value leading all functions to zero. If there is no
           valid result, an Error comment will appear on screen
     """
-    # Start iterative process
+    # Start the iterative process
     for _ in range(max_iter):
         # Evaluate functions with E0 and E1
         f0 = find.error_E(E0)
