@@ -8,12 +8,12 @@ import jsonlines
 data_deuteron = [
     {"Potential": "Central", "Depth_c": 13.888, "Range_c": 2.8},
     {"Potential": "Tensor", "Depth_t": 10.7632, "Range_t": 2.8},
-    {"Initial conditions": "us wavefunction", "us_0": 0.25, "vs_0": 1.0},
-    {"Initial conditions": "ud wavefunction", "ud_0": 0.015625, "vd_0": 0.1875},
+    {"Initial conditions": "us wavefunction", "us_0": 0.5, "vs_0": 1.0},
+    {"Initial conditions": "ud wavefunction", "ud_0": 0.125, "vd_0": 0.5},
     {"Boundary conditions": "us wavefunction", "us_fin": 0.038, "vs_fin": -0.012},
     {"Boundary conditions": "Derivatives", "ud_fin": 0.00038, "vd_fin": -0.0001},
-    {"Range of radius": "Range r", "r_initial": 0.25, "r_final": 10.0},
-    {"Energy guess": -2.1}
+    {"Range of radius": "Range r", "r_initial": 0.5, "r_final": 10.0},
+    {"Energy guess": -2.225}
 ]
 
 file_name = "deuteron_values.jsonl"
