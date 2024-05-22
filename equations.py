@@ -40,10 +40,9 @@ def radial_equations(r, y, E):
     dus = vs
     dud = vd
     # The 2nd derivatives of eigenfunctions us and ud
-    dvs = (M / (h_bar**2)) * (ud * np.sqrt(8) * pot.V_t_squarewell(r)
-                              + us * (pot.V_c_squarewell(r) - E))
-    dvd = (M / (h_bar**2)) * (us * np.sqrt(8) * pot.V_t_squarewell(r)
+    dvs = (M / (h_bar**2)) * (ud * np.sqrt(8) * pot.V_T(r)
+                              + us * (pot.V_C(r) - E))
+    dvd = (M / (h_bar**2)) * (us * np.sqrt(8) * pot.V_T(r)
                               + ud * ((6.0 * h_bar**2) / (M * r**2) - E
-                                      - 2.0 * pot.V_t_squarewell(r)
-                                      + pot.V_c_squarewell(r)))
+                                      - 2.0 * pot.V_T(r) + pot.V_C(r)))
     return [dus, dvs, dud, dvd]
