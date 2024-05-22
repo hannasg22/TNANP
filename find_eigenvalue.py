@@ -33,7 +33,7 @@ def error_E(E_guess):
     print(f"Running error_E with E_guess: {E_insert}")
 
     # Define the midpoint
-    cut = get.range_of_radius()[1] * 0.9
+    cut = get.range_of_radius()[1] * 0.36
     print(f"cut: {cut}")
 
     # Get the conditions from the data file
