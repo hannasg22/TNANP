@@ -56,7 +56,8 @@ def error_E(E_guess):
     error_ud = sol1.y[2][-1] - sol2.y[2][-1]
     error_vd = sol1.y[3][-1] - sol2.y[3][-1]
 
-    error = [error_us, error_vs, error_ud, error_vd]
+    # Return array to make operation in secant function possible
+    error = np.array([error_us, error_vs, error_ud, error_vd])
     print(f"error: {error}")
     
     return error

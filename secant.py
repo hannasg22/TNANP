@@ -6,7 +6,7 @@ point. Also their derivatives must me smooth.
 """
 
 import numpy as np
-import find_eigenvalue as find
+import find_E as E
 
 def secant_method(funcs, E0, E1, tol=1e-6, max_iter=100):
     """This function takes functions and uses the secant method to find
@@ -23,8 +23,8 @@ def secant_method(funcs, E0, E1, tol=1e-6, max_iter=100):
     # Start the iterative process
     for _ in range(max_iter):
         # Evaluate functions with E0 and E1
-        f0 = find.error_E(E0)
-        f1 = find.error_E(E1)
+        f0 = funcs(E0)
+        f1 = funcs(E1)
         
         # Approximation used in the secant method
         dE = E1 - E0
