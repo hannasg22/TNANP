@@ -1,4 +1,4 @@
-"""This file will just plot the potentials from GEZERLIS book.
+"""This file will just plot the potentials from gezerlis file.
 
 """
 import numpy as np
