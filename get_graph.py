@@ -41,8 +41,12 @@ def plot_functions(energy, a, b, c, d):
     solD = solve_ivp(lambda r, y: eq.radial_equations(r, y, energy),
                      r_range2, fin_cond_D, method='RK45', max_step=0.01)
 
+    r_out = solA.t
+    r_in = solC.t
     # Combinations of the solutions
-    sol_out = a * solA.y + b * solB.y
-    sol_in = c * solC.y + d * solD.y
+    us_out = a * solA.y[0] + b * solB.y[0]
+    us_in = c * solC.y[0] + d * solD.y[0]
+    ud_out = a * solA.y[2] + b * solB.y[2]
+    ud_in = c * solC.y[2] + d * solD.y[2]
 
-    return [sol_out, sol_in]
+    return [us_out, us_in, ud_out, ud_in, r_out, r_in]
