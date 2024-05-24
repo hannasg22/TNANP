@@ -11,11 +11,10 @@ So, to carry out the integration we make use of the next SciPy function:
 import numpy as np
 from scipy.integrate import solve_ivp
 
-import potentials as pot
 import equations as eq
 import get_values as get
 
-def error_E(E_guess, A, B, C, D):
+def error_E(A, B, C, D):
     """This function analyses if the results obtained with E_guess
     match the desired boundary conditions.
 
@@ -27,8 +26,9 @@ def error_E(E_guess, A, B, C, D):
     Output:
         error: difference between the results with E_guess in cut point
     """
+    E_guess = get.energy_guess()
     print(f"E values: {E_guess}")
-    
+
     # Define the midpoint
     cut = get.range_of_radius()[1] * 0.36
 
@@ -43,8 +43,6 @@ def error_E(E_guess, A, B, C, D):
     # Ranges for the forward and backward integration
     r_range1 = [get.range_of_radius()[0], cut]
     r_range2 = [get.range_of_radius()[1], cut]
-    print(f"r_range1: {r_range1}")
-    print(f"r_range2: {r_range2}")
 
     # Solve system for E_guess forwards
     solA = solve_ivp(lambda r, y: eq.radial_equations(r, y, E_guess),
@@ -63,13 +61,13 @@ def error_E(E_guess, A, B, C, D):
     sol_in = C * solC.y + D * solD.y
     
     # Impose conditions of continuituy
-    error_us1 = sol_out[0] - 3.0
-    error_us2 = sol_in[0] - 3.0
-    error_ud = sol_out[2] - sol_in[2]
-    error_vd = sol_out[3] - sol_in[3]
+    error_us1 = sol_out[0][-1] - 3.0
+    error_us2 = sol_in[0][-1] - 3.0
+    error_ud = sol_out[2][-1] - sol_in[2][-1]
+    error_vd = sol_out[3][-1] - sol_in[3][-1]
 
     # Return array to make operation in secant function possible
-    error = np.array([error_us1, error_us1, error_ud, error_vd])
+    error = [error_us1, error_us1, error_ud, error_vd]
     print(f"error: {error}")
     
     return error
