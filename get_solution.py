@@ -16,8 +16,8 @@ def get_ABCD():
     ABCD_values = fsolve(find.error_ABCD, initial_ABCD)
     return ABCD_values
 
-def get_E(E_initial):
-    
+print(get_ABCD())
+
 
 
 # Try to reach the E eigenvalue
