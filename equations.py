@@ -44,5 +44,6 @@ def radial_equations(r, y, E):
                               + us * (pot.V_C(r) - E))
     dvd = (M / (h_bar**2)) * (us * np.sqrt(8) * pot.V_T(r)
                               + ud * ((6.0 * h_bar**2) / (M * r**2) - E
-                                      - 2.0 * pot.V_T(r) + pot.V_C(r)))
+                                      - 2.0 * pot.V_T(r)
+                                      + pot.V_C(r)))
     return [dus, dvs, dud, dvd]

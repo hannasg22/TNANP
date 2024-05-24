@@ -32,7 +32,7 @@ def error_ABCD(coeffs):
     E_guess = get.energy_guess()
 
     # Define the midpoint
-    cut = get.range_of_radius()[1] * 0.36
+    cut = get.range_of_radius()[1] * 0.4
 
     # Get initial conditions from the data file
     ini_cond_A = get.initial_conditions_A()
@@ -87,7 +87,7 @@ def error_E(E_guess, ABCD):
     """
     [A, B, C, D] = ABCD
     # Define the midpoint
-    cut = get.range_of_radius()[1] * 0.36
+    cut = get.range_of_radius()[1] * 0.4
 
     # Get initial conditions from the data file
     ini_cond_A = get.initial_conditions_A()
