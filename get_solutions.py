@@ -15,11 +15,17 @@ import get_values as get
 # Find solution for ABCD coefficients
 def get_ABCD():
     initial_ABCD=[1., 1., 1., 1.]
-    ABCD_values = fsolve(find.error_ABCD, initial_ABCD)
-    return ABCD_values
+    ABCD_values = root(find.error_ABCD, initial_ABCD)
+    return ABCD_values.x
 
-E_final = root_scalar(find.error_E, args=get_ABCD(), method='secant',
-                      x0=get.energy_guess(), x1=get.energy_guess()+1.)
+A_fin = get_ABCD()[0]
+B_fin = get_ABCD()[1]
+C_fin = get_ABCD()[2]
+D_fin = get_ABCD()[3]
+
+E_final = root_scalar(find.error_E, args=(A_fin, B_fin, C_fin, D_fin),
+                      method='secant', x0=get.energy_guess(),
+                      x1=get.energy_guess()+1.0)
 
 E_use = E_final.root
 print(E_use)

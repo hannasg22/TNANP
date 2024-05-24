@@ -32,7 +32,7 @@ def error_ABCD(coeffs):
     E_guess = get.energy_guess()
 
     # Define the midpoint
-    cut = get.range_of_radius()[1] * 0.4
+    cut = get.range_of_radius()[1] * 0.36
 
     # Get initial conditions from the data file
     ini_cond_A = get.initial_conditions_A()
@@ -69,11 +69,11 @@ def error_ABCD(coeffs):
     error_vd = sol_out[3][-1] - sol_in[3][-1]
 
     # Return list to make operation in fsolve function possible
-    error = [error_us1, error_us1, error_ud, error_vd]
+    error = [error_us1, error_us2, error_ud, error_vd]
     
     return error
 
-def error_E(E_guess, ABCD):
+def error_E(E_guess, A, B, C, D):
     """This function will finally find the energy eigenvalue after
     finding A, B, C and D coefficients. The proper E value will be found
     by imposing the last continuity condition left.
@@ -85,9 +85,8 @@ def error_E(E_guess, ABCD):
     Output:
         Error function for the las continuity condition we must find
     """
-    [A, B, C, D] = ABCD
     # Define the midpoint
-    cut = get.range_of_radius()[1] * 0.4
+    cut = get.range_of_radius()[1] * 0.36
 
     # Get initial conditions from the data file
     ini_cond_A = get.initial_conditions_A()
