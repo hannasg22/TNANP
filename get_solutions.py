@@ -7,6 +7,7 @@ import numpy as np
 from scipy.optimize import root_scalar, root, least_squares, fsolve
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 import find_results as find
 import equations as eq
@@ -42,17 +43,27 @@ us_values_in = wf_final[1]
 ud_values_out = wf_final[2]
 ud_values_in = wf_final[3]
 
-# Graph of functions
-plt.figure()
-plt.plot(r_values_out, us_values_out, label='us(r)')
-plt.plot(r_values_out, ud_values_out, label='ud(r)')
-plt.plot(r_values_in, us_values_in, label='us(r)')
-plt.plot(r_values_in, ud_values_in, label='ud(r)')
-plt.axhline(y=E_use, color='r', linestyle='--',
-            label='Binding energy E (MeV)')
-plt.xlabel('r (fm)')
-plt.ylabel('u(r)')
-plt.title('Eigenfunctions vs. ditance r')
+# Graph with seaborn
+sns.set(style='darkgrid')
+
+plt.figure(figsize=(10, 6))
+
+plt.style.use('dark_background')
+
+plt.plot(r_values_out, us_values_out, label='$u_s(r)$', color='pink')
+plt.plot(r_values_in, us_values_in, color='pink')
+plt.plot(r_values_out, ud_values_out, label='$u_d(r)$', color='magenta')
+plt.plot(r_values_in, ud_values_in, color='magenta')
+
+plt.xlabel('r', color='white')
+plt.ylabel('V(r)', color='white')
+plt.title('Eigenfunctions $u_s(r)$ and $u_d(r)$ vs. $r (fm)$', color='black')
 plt.legend()
-plt.grid(True)
+plt.grid(True, color='gray')
+
+plt.gca().spines['bottom'].set_color('black')
+plt.gca().spines['left'].set_color('black')
+plt.gca().tick_params(axis='x', colors='black')
+plt.gca().tick_params(axis='y', colors='black')
+
 plt.show()
