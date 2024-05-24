@@ -6,7 +6,7 @@ import numpy as np
 from scipy.optimize import root_scalar, root, least_squares, fsolve
 from scipy.integrate import solve_ivp
 
-import find_ABCD as find
+import find_results as find
 import equations as eq
 import get_values as get
 
@@ -16,13 +16,6 @@ def get_ABCD():
     ABCD_values = fsolve(find.error_ABCD, initial_ABCD)
     return ABCD_values
 
-print(get_ABCD())
-
-
-
-# Try to reach the E eigenvalue
-# What method should we use? root? root_scalar?
-"""
-sol = least_squares(find.error_E, x0)
-print(f"Solution: {sol}")
-"""
+final_E = root_scalar(find.error_E, args=get_ABCD(), method='secant',
+                      x0=get.energy_guess(), x1=get.energy_guess()+1.)
+print(final_E.root)
