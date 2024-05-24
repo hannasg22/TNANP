@@ -30,7 +30,6 @@ def error_ABCD(coeffs):
     """
     A, B, C, D = coeffs
     E_guess = get.energy_guess()
-    print(f"E values: {E_guess}")
 
     # Define the midpoint
     cut = get.range_of_radius()[1] * 0.36
