@@ -70,6 +70,7 @@ def error_ABCD(coeffs):
 
     # Return list to make operation in fsolve function possible
     error = [error_us1, error_us2, error_ud, error_vd]
+    print(f"error: {error}")
     
     return error
 
