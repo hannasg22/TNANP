@@ -6,14 +6,19 @@ import numpy as np
 from scipy.optimize import root_scalar, root, least_squares, fsolve
 from scipy.integrate import solve_ivp
 
-import find_E as find
+import find_ABCD as find
 import equations as eq
 import get_values as get
-import secant as sec
 
-initial_ABCD=[1., 1., 1., 1.]
-ABCD_values = fsolve(find.error_E, initial_ABCD)
-print(ABCD_values)
+# Find solution for ABCD coefficients
+def get_ABCD():
+    initial_ABCD=[1., 1., 1., 1.]
+    ABCD_values = fsolve(find.error_ABCD, initial_ABCD)
+    return ABCD_values
+
+def get_E(E_initial):
+    
+
 
 # Try to reach the E eigenvalue
 # What method should we use? root? root_scalar?
