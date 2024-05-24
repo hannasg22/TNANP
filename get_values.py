@@ -38,14 +38,14 @@ def tensorial_V():
                     depth_and_range_t.append(line["Range_t"])
     return depth_and_range_t
 
-def initial_conditions():
+def initial_conditions_A():
     file_name = "deuteron_values.jsonl"
-    init_cond = [] # Form of the vector: [us_0, vs_0, ud_0, vd_0]
+    init_cond = [] # Form of the vector: [us_0A, vs_0A, ud_0A, vd_0A]
 
-    # Open file and read initial conditions
+    # Open file and read initial conditions A
     with jsonlines.open(file_name, mode='r') as reader:
         for line in reader:
-            if "Initial conditions" in line:
+            if "Initial conditions A" in line:
                 if "us_0" in line:
                     init_cond.append(line["us_0"])
                 if "vs_0" in line:
@@ -55,15 +55,51 @@ def initial_conditions():
                 if "vd_0" in line:
                     init_cond.append(line["vd_0"])
     return init_cond
-   
-def boundary_conditions():
+
+def initial_conditions_B():
+    file_name = "deuteron_values.jsonl"
+    init_cond = [] # Form of the vector: [us_0B, vs_0B, ud_0B, vd_0B]
+
+    # Open file and read initial conditions B
+    with jsonlines.open(file_name, mode='r') as reader:
+        for line in reader:
+            if "Initial conditions B" in line:
+                if "us_0" in line:
+                    init_cond.append(line["us_0"])
+                if "vs_0" in line:
+                    init_cond.append(line["vs_0"])
+                if "ud_0" in line:
+                    init_cond.append(line["ud_0"])
+                if "vd_0" in line:
+                    init_cond.append(line["vd_0"])
+    return init_cond
+  
+def boundary_conditions_C():
     file_name = "deuteron_values.jsonl"
     bound_cond = []
 
-    # Open file and read boundary conditions
+    # Open file and read boundary conditions C
     with jsonlines.open(file_name, mode='r') as reader:
         for line in reader:
-            if "Boundary conditions" in line:
+            if "Boundary conditions C" in line:
+                if "us_fin" in line:
+                    bound_cond.append(line["us_fin"])
+                if "vs_fin" in line:
+                    bound_cond.append(line["vs_fin"])
+                if "ud_fin" in line:
+                    bound_cond.append(line["ud_fin"])
+                if "vd_fin" in line:
+                    bound_cond.append(line["vd_fin"])
+    return bound_cond
+
+def boundary_conditions_D():
+    file_name = "deuteron_values.jsonl"
+    bound_cond = []
+
+    # Open file and read boundary conditions D
+    with jsonlines.open(file_name, mode='r') as reader:
+        for line in reader:
+            if "Boundary conditions D" in line:
                 if "us_fin" in line:
                     bound_cond.append(line["us_fin"])
                 if "vs_fin" in line:
