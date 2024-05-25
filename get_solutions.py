@@ -1,10 +1,10 @@
-"""This file contains the part in which we simply try to get the result
-for the energy.
+"""This file contains the part in which we simply try to get the results
+for the energy and the A,B,C,D variables.
 
 """
 
 import numpy as np
-from scipy.optimize import root_scalar, root, least_squares, fsolve
+from scipy.optimize import root_scalar, root
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -21,10 +21,9 @@ def get_ABCD():
     ABCD_values = root(find.error_ABCD, initial_ABCD)
     return ABCD_values.x
 
-A, B, C, D = get_ABCD()
+A_get, B_get, C_get, D_get = get_ABCD()
 
-E_final = root_scalar(find.error_E, args=(A, B,
-                                          C, D),
+E_final = root_scalar(find.error_E, args=(A_get, B_get, C_get, D_get),
                       method='secant', x0=get.energy_guess(),
                       x1=get.energy_guess()+1.0)
 
@@ -33,9 +32,10 @@ print(E_use)
 
 # Save values in JSONLines file
 with jsonlines.open('values_ABCDE.jsonl', mode='a') as file:
-    file.write({"A": A, "B": B, "C": C, "D": D, "E": E_use})
+    file.write({"A": A_get, "B": B_get, "C": C_get, "D": D_get,
+                "E": E_use})
 
-print("Valores de A, B, C, D y E_use guardados en values_ABCDE.jsonl")
+print("Values A, B, C, D y E_use saved in values_ABCDE.jsonl")
 
 """
 wf_final = graph.plot_functions(E_use, get_ABCD()[0], get_ABCD()[1],
