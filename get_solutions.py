@@ -8,6 +8,7 @@ from scipy.optimize import root_scalar, root, least_squares, fsolve
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 import seaborn as sns
+import jsonlines
 
 import find_results as find
 import equations as eq
@@ -20,16 +21,26 @@ def get_ABCD():
     ABCD_values = root(find.error_ABCD, initial_ABCD)
     return ABCD_values.x
 
-E_final = root_scalar(find.error_E, args=(get_ABCD()[0], get_ABCD()[1],
-                                          get_ABCD()[2], get_ABCD()[3]),
+A, B, C, D = get_ABCD()
+
+E_final = root_scalar(find.error_E, args=(A, B,
+                                          C, D),
                       method='secant', x0=get.energy_guess(),
                       x1=get.energy_guess()+1.0)
 
 E_use = E_final.root
 print(E_use)
 
+# Save values in JSONLines file
+with jsonlines.open('values_ABCDE.jsonl', mode='a') as file:
+    file.write({"A": A, "B": B, "C": C, "D": D, "E": E_use})
+
+print("Valores de A, B, C, D y E_use guardados en values_ABCDE.jsonl")
+
+"""
 wf_final = graph.plot_functions(E_use, get_ABCD()[0], get_ABCD()[1],
                                 get_ABCD()[2], get_ABCD()[3])
+
 
 # Get the values for r, us and ud
 r_values_out = wf_final[4]
@@ -70,3 +81,4 @@ plt.gca().tick_params(axis='x', colors='black')
 plt.gca().tick_params(axis='y', colors='black')
 
 plt.show()
+"""
