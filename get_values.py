@@ -6,6 +6,8 @@ We will have functions getting the values for:
     - Boundary conditions
     - Range of radius r
     - Energy guess value
+    - ABCD variables
+    - Proper energy eigenvalue
 """
 
 import jsonlines
@@ -133,3 +135,31 @@ def energy_guess():
             if "Energy guess" in line:
                 E_guess = line["Energy guess"]
     return E_guess
+
+def ABCD():
+    file_name = "values_ABCDE.jsonl"
+    variables =[]
+    
+    # Open file and read ABCD values
+    with jsonlines.open(file_name, mode='r') as reader:
+        for line in reader:
+            if "A" in line:
+                variables.append(line["A"])
+            if "B" in line:
+                variables.append(line["B"])
+            if "C" in line:
+                variables.append(line["C"])
+            if "D" in line:
+                variables.append(line["D"])
+                                 
+    return variables
+
+def eigenvalue():
+    file_name = "values_ABCDE.jsonl"
+
+    # Open file and read E value
+    with jsonlines.open(file_name, mode='r') as reader:
+        for line in reader:
+            if "E" in line:
+                eigenv = line["E"]
+    return eigenv
