@@ -1,17 +1,43 @@
 """This module contains the potentials used to solve our equations.
 
-Parameters needed in the potentials:
+Parameters needed in the potentials modelled through squarewells:
     r0: r value for the range of the square well potential (units: fm)
     V0 : depth of the potential (units: MeV)
-These values have been chosen due to experimental data.
-
-For further information check README.md section.
+These have been chosen due to experimental data.
 """
 import math
 
 import get_values as get
 
 
+# Potentials from gezerlis (the ones used in the code)
+def V_C(r):
+    """This function contains the potential defined in the gezerlis
+    8.57 exercise in order to represent the central potential of the
+    deuteron system.
+    
+    Input:
+        r : distance between proton and neutron
+    Output:
+        Value of the potential for r
+    """
+    
+    return -47.0 * math.exp(-r/1.18) * 1.18 / r
+
+def V_T(r):
+    """This function contains the potential defined in the gezerlis
+    8.57 exercise in order to represent the tensorial potential of the
+    deuteron system.
+    
+    Input:
+        r : distance between proton and neutron
+    Output:
+        Value of the potential for r
+    """
+    
+    return -24.0 * math.exp(-r/1.7) * 1.7 / r
+
+# Potentials modelled with squarewells
 def V_c_squarewell(r):
     """This function calculates the value of the central part of the
     potential.         
@@ -47,11 +73,3 @@ def V_t_squarewell(r):
         return -V0_t
     else:
         return 0.0
-
-# POTENTIAL FROM GEZERLIS
-
-def V_C(r):
-    return -47.0 * math.exp(-r/1.18) * 1.18 / r
-
-def V_T(r):
-    return -24.0 * math.exp(-r/1.7) * 1.7 / r
