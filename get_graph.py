@@ -1,7 +1,8 @@
-"""In this file we will just have the function to plot easily the final
-results of the eigenfunctions with the already obtained proper energy
-eigenvalue and A, B, C and D variables.
+"""In this file we have the function to plot easily the final results of
+the eigenfunctions with the obtained proper energy eigenvalue and A, B,
+C and D variables.
 """
+
 from scipy.integrate import solve_ivp
 import numpy as np
 
@@ -10,8 +11,12 @@ import equations as eq
 
 
 def plot_functions(energy, a, b, c, d):
-    """This function will solve the equations with the proper values of
-    E and other coefficients.
+    """This function solves the equations with the proper values of E
+    and the other coefficients.
+
+    Outputs:
+        The values of the eigenfunctions outwards and inwards, as well
+        as the radius values.
     """
 
     # Define the midpoint
