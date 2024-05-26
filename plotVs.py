@@ -1,5 +1,4 @@
-"""This file will just plot the potentials from gezerlis file.
-
+"""This file will just plot the potentials from gezerlis 8.57 exercise.
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,6 +6,7 @@ import seaborn as sns
 
 import get_values as get
 import potentials as pot
+
 
 # Define range of the radius
 r_values = np.linspace(get.range_of_radius()[0],
