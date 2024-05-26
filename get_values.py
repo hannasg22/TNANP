@@ -1,5 +1,5 @@
-"""This module defines all variables described in deuteron_values.jsonl
-to later use them in the rest of the code.
+"""This file defines all variables described in deuteron_values.jsonl to
+later use them in the rest of the code.
 We will have functions getting the values for:
     - Potentials' depth and range
     - Initial conditions
@@ -11,6 +11,7 @@ We will have functions getting the values for:
 """
 
 import jsonlines
+
 
 def central_V():
     file_name = "deuteron_values.jsonl"
