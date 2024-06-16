@@ -37,10 +37,9 @@ sns.set(style='darkgrid')
 
 plt.figure(figsize=(10, 6))
 
-plt.style.use('dark_background')
 
-plt.plot(r_values, us_values, label='$u_s(r)$', color='pink')
-plt.plot(r_values, ud_values, label='$u_d(r)$', color='magenta')
+plt.plot(r_values, us_values, label='$u_s(r)$', color='hotpink')
+plt.plot(r_values, ud_values, label='$u_d(r)$', color='mediumvioletred')
 
 plt.xlabel('r (fm)', color='black')
 plt.title('Eigenfunctions $u_s(r)$ and $u_d(r)$ vs. $r (fm)$', color='black')
