@@ -80,4 +80,5 @@ Let us describe the way in which this code works and what is each module used fo
 - [potentials.py](potentials.py): this file contains the functions describing both potentials we have defined above.
 - [plotVs.py](plotVs.py): here we get the image of both potentials, to better imagine the form of the interaction terms between the particles.
 - [equations.py](equations.py): this file contains the form of the system we have to solve. We basically take the two second order differential equations and create a four first order differential equations system.
-- 
+- [find_results.py](find_results.py): we define the root functions that we will use in root finding processes implemented in other modules to find the values of A, B, C and D constants and also the E energy eigenvalue.
+- [get_solutions.py](get_solutions.py):
