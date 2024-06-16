@@ -52,6 +52,21 @@ Also, we must take into account the initial and boundary conditions we expect fo
 $$u_s(0)=u_d(0)=0, \hspace{0.5cm} u_s(\infty)=u_d(\infty)=0
 $$
 
-Apart from that, we will be able to also calculate the quadrupole moment Q. This term indicates that the charge distribution is not spherically symmetric. This is why we must take into account the d-wave $L=2$ case! If we only had L=0, since its wavefunction corresponds to spherical symmetry, we would get $Q=0$. This would also represent just a central potential for the interaction of the nucleons. Nevertheless, from experimental data we know that $Q=0.286e \cdot fm^2$. Therefore, everything fits perfectly with the previously described connection between the $L=0$ and $L=2$ wavefunctions and the non-central potential. 
+Apart from that, we will be able to also calculate the quadrupole moment Q. This term indicates that the charge distribution is not spherically symmetric. This is why we must take into account the d-wave $L=2$ case! If we only had L=0, since its wavefunction corresponds to spherical symmetry, we would get $Q=0$. This would also represent just a central potential for the interaction of the nucleons. Nevertheless, from experimental data we know that $Q=0.286e \cdot fm^2$. Therefore, everything fits perfectly with the previously described connection between the $L=0$ and $L=2$ wavefunctions and the non-central potential.
 
-### Further details
+The value of Q is obtained through its definition:
+
+$$Q=\sqrt{\frac{16 \pi}{5}} \langle J(M=J)|\hat{Q}_{20}|J(M=J) \rangle
+$$
+
+which can be further developed as:
+
+$$Q= e \sqrt{\frac{16 \pi}{5}} \int \psi^*(J=M=1)(\vec{r}) \frac{r^2}{4} Y_{20}(\hat{r}) \psi(J=M=1)(\vec{r})d^3r,
+$$
+
+where $\psi$ is the total wavefunction in which we have both $u_s$ and $u_d$ as a linear combination, due to the fact that our system is a mixture of these two states. When we work with this formula, we finally reach the easy form of:
+
+$$Q=\frac{1}{20} \int dr \cdot r^2 \cdot u_d(r) [\sqrt{8}u_s(r) - u_d(r)].
+$$
+
+This is exactly the formula used in the code to obtain the result of the quarupole moment, which will also work as a proof of the correctness of the model used.
