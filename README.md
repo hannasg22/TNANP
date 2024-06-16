@@ -86,3 +86,6 @@ Let us describe the way in which this code works and what is each module used fo
 - [get_graph.py](get_graph.py): here we write a function which solves the equations with the obtained values through [get_solutions.py](get_solutions.py), which can be extracted through [get_values.py](get_values.py).
 - [plotWFs.py](plotWFs.py): with this value we finally reach the form of the $u_s$ and $u_d$ wavefunctions. To reach it we make use of [get_graph.py](get_graph.py). The two functions are plotted vs. the distance between both nucleons $r (fm)$.
 - [calculate_properties.py](calculate_properties.py): finally we can calculate the probability of the system being in the $u_d$ d-wave state (after normalizing the total wavefunction). Also we reach the Q electric quadrupole moment.
+
+### Steps taken to reach final results
+
