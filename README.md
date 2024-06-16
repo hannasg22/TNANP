@@ -81,4 +81,5 @@ Let us describe the way in which this code works and what is each module used fo
 - [plotVs.py](plotVs.py): here we get the image of both potentials, to better imagine the form of the interaction terms between the particles.
 - [equations.py](equations.py): this file contains the form of the system we have to solve. We basically take the two second order differential equations and create a four first order differential equations system.
 - [find_results.py](find_results.py): we define the root functions that we will use in root finding processes implemented in other modules to find the values of A, B, C and D constants and also the E energy eigenvalue.
-- [get_solutions.py](get_solutions.py):
+- [get_solutions.py](get_solutions.py): using functions in [find_results.py](find_results.py), we apply root finding processes to reach first the proper values of A, B, C and D which will give the continuity of the eigenfunctions in a selected midpoint. Later, with the obtained values, we apply again a root finding function to reach the appropiate value for E energy. All the results will be saved in [values_ABCDE.jsonl](values_ABCDE.jsonl) and they will be extracted through [get_values.py](get_values.py) in other files.
+- 
