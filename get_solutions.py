@@ -8,7 +8,6 @@ import jsonlines
 
 import find_results as find
 import get_values as get
-import get_graph as graph
 
 
 # Find solution for ABCD coefficients
