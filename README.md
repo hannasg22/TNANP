@@ -70,3 +70,9 @@ $$Q=\frac{1}{20} \int dr \cdot r^2 \cdot u_d(r) [\sqrt{8}u_s(r) - u_d(r)].
 $$
 
 This is exactly the formula used in the code to obtain the result of the quarupole moment, which will also work as a proof of the correctness of the model used.
+
+## How to use the code
+
+Let us describe the way in which this code works and what is each module used for.
+
+- [generate_data.py](generate_data.py): here we insert the values for our model. Precisely, we will implement: 
