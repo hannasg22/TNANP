@@ -12,7 +12,12 @@ With the aim of better understanding what it is done in this code, let us introd
 
 ### Main idea
 
-The deuteron is the **only bound state of two nucleons** and its bound is weak, therefore it only exists in the ground state. It is formed by one proton and one neutron and the nuclear force between them has the next main properties: attractive (to form the bound state), short range (of order of $\sim 1fm$ ) and non-central (it has a tensor component). 
+The deuteron is the **only bound state of two nucleons** and its bound is weak, therefore it only exists in the ground state. It is formed by one proton and one neutron and the nuclear force between them has the next main properties: 
+- Attractive: forms a bound state
+- Short range: of order of $\sim 1fm$
+- Non-central: it has a tensor component connecting different states
+- Hard core: there is a range in which the potential is completely repulsive, so that the nucleons do not collapse
+- Conserves parity 
 
 All these assumptions have been made through the obtained experimental data. Furthermore, the potential describing the interaction between both particles has been contructed more precisely to fit the actual results. It can be widely analysed and it will show many different components. We instead will focus on the **two main quantities**:
 - Central potential $V_C$
@@ -40,11 +45,13 @@ $$
 $$ [\frac{\hbar^2}{M}(\frac{d^2}{dr^2}-\frac{6}{r^2})+E+2V_T(r)-V_C(r)]u_d=\sqrt{8}V_T(r)u_s
 $$
 
-These are exactly the equations that our code will try to solve! So, we will **get the two wavefunctions $u_s$ and $u_d$ and the energy eigenvalue** (which, by experimental data, we know it is: $E_B=-2.225 MeV$).
+These are exactly the equations that our code will try to solve! So, we will **get the two wavefunctions $u_s$ and $u_d$ and the energy eigenvalue** (which, by experimental data, we know it is: $E=-2.225 MeV$).
 
-Also, we must take into account the initial and boundary conditions we expect this kind of system to follow:
+Also, we must take into account the initial and boundary conditions we expect for this kind of system:
 
 $$u_s(0)=u_d(0)=0, \hspace{0.5cm} u_s(\infty)=u_d(\infty)=0
 $$
+
+Apart from that, we will be able to also calculate the quadrupole moment Q. This term indicates that the charge distribution is not spherically symmetric. This is why we must take into account the d-wave $L=2$ case! If we only had L=0, since its wavefunction corresponds to spherical symmetry, we would get $Q=0$. This would also represent just a central potential for the interaction of the nucleons. Nevertheless, from experimental data we know that $Q=0.286e \cdot fm^2$. Therefore, everything fits perfectly with the previously described connection between the $L=0$ and $L=2$ wavefunctions and the non-central potential. 
 
 ### Further details
