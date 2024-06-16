@@ -4,7 +4,7 @@ them in a file deuteron_values.jsonl to later use them in our functions.
 
 import jsonlines
 
-# DATA FOR DEUTERON MODEL
+# Data for our deuteron model
 data_deuteron = [
     {"Potential": "Central", "Depth_c": 13.888, "Range_c": 2.8},
     {"Potential": "Tensor", "Depth_t": 10.7632, "Range_t": 2.8},
@@ -22,7 +22,7 @@ data_deuteron = [
 
 file_name = "deuteron_values.jsonl"
 
-# WRITE VALUES IN THE FILE
+# Write values in a jsonlines file
 with jsonlines.open(file_name, mode='w') as writer:
     writer.write_all(data_deuteron)
 
