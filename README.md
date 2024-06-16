@@ -90,3 +90,17 @@ Let us describe the way in which this code works and what is each module used fo
 ### Steps taken to reach final results
 
 1. We introduce the model we want for the [potential](potentials.py) part and the desired [initial and boundary conditions](generate_data.py). In our case, we used the fact that $u_s(r) \sim r$ for small r values and $u_d(r) \sim r^3$. This way, we had an easy method to implement the initial conditions for two independent solutions which would be obeying these properties in the initial point. For the final point, we used the fact that both eigenfunctions follow a form $u \sim e^{-kr}$ for large values of r. So we can have an idea of how the wavefunctions will behave in the final value. Furthermore, we expect a higher value for $u_s$, due to the magnitude expected for this function compared to $u_d$.
+2. We implement the [equations](equations.py) we are trying to solve. As we are working with second order differential equations, it is convenient to convert each on a system on two first order differential equations. Later, this systems will be ready to be solved by many integration methods which work for first order ODEs.
+3. Once we have the system we want to solve, we must follow a specific procedure to get all our conditions obeyed. Instead of implementing the shooting method directly from the starting point to the final point, we will use the **shooting method to a fitting point**. This means that we will make the solutions be continuous in a midpoint R rather than trying to make the functions obey the final boundary conditions (small changes make the functions diverge due to the exponential behavior for large r values).
+4. Having this situation in mind, since we are facing two coupled second order equations, we will have two linearly independent solutions that are regular in the origin and that obey our initial conditions: $u_{s_A}, u_{d_A}$ and $u_{s_B}, u_{d_B}$. The same will happen in the final point with the boundary conditions. Consequently, we will have:
+
+$$u_{s_{out}}=A u_{s_A}(r)+Bu_{s_B}(r), \hspace{1cm} u_{s_{in}}=C u_{s_C}(r)+Du_{s_D}(r), \hspace{1cm} u_{d_{out}}=A u_{d_A}(r)+Bu_{d_B}(r), \hspace{1cm} u_{d_{in}}=C u_{d_C}(r)+Du_{d_D}(r).
+$$
+
+So we must find the values for A, B, C and D which obey:
+$$u_{s_{out}}(R)=u_{s_{out}}(R)=u_s(R), \hspace{1cm} u_{d_{out}}(R)-u_{d_{in}}(R)=0, \hspace{1cm} u_{d_{out}}^{'}(R)-u_{d_{in}}^{'}(R)=0.
+$$
+
+This is precisely defined in [find_results.py](find_results.py), where we describe these root functions.
+
+5. 
