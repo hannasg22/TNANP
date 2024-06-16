@@ -23,9 +23,9 @@ Both can also be described by diverse models. One option (the one we will use) i
 $$ V=V_C(r)+V_T(r)\hat{S}=-47\frac{exp(r/1.18)}{r/1.18}-24\frac{exp(r/1.7)}{r/1.7}\hat{S}
 $$
 
-where $\hat{S}=\hat{S}_{12}$ is the tensor operator. The strength of the potentials is defined in MeV and the distance r in fm. This specific choice has been made to fit the model implemented in the Gezerlis book
+where $\hat{S}=\hat{S}_{12}$ is the tensor operator. The strength of the potentials is defined in MeV and the distance r in fm. This specific choice has been made to fit the model exposed in the [Gezerlis book](https://numphyspy.org) _Numerical Methods in Physics with Python_.
 
-Now, let us derive the form of the Hamiltonian using some deuteron's properties. The deuteron has total isospin $T=0$ and spin parity $J^{\pi}=1^+$. As $s_p=s_n=1/2$, the total spin could in principle be $S=1,0$. At the same time, parity conservation imposes some rules for the quantum number for the orbital angular momentum $L$ (together with $J-1 < L < J+1$): since parity follows rule $\pi=(-1)^l=+1$, only $L=0$ (S-wave) and $L=2$ (D-wave) are allowed. This means that the ground state of deuteron is a mixture of these two wavefunctions (which are connected through the tensor interaction). At this point, due to the asymmetry of the whole wavefunction in a system of two fermions, we have $S=1$ for the total spin.
+Now, let us derive the form of the Hamiltonian using some of the deuteron's properties. The deuteron has total isospin $T=0$ and spin parity $J^{\pi}=1^+$. As $s_p=s_n=1/2$, the total spin could in principle be $S=1,0$. At the same time, parity conservation imposes some rules for the quantum number for the orbital angular momentum $L$ (together with $J-1 < L < J+1$): since parity follows rule $\pi=(-1)^l=+1$, only $L=0$ (S-wave) and $L=2$ (D-wave) are allowed. This means that the ground state of deuteron is a mixture of these two wavefunctions (which are connected through the tensor interaction). At this point, due to the asymmetry of the whole wavefunction in a system of two fermions, we have $S=1$ for the total spin.
 
 These results lead us from the total Hamiltonian
 
