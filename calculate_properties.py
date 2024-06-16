@@ -1,6 +1,5 @@
-"""This file calculates de normalized wavefunctions so that we can get
-the probability for ud, root-mean-square radius and quadrupole moment.
-
+"""This file calculates the normalized wavefunctions so that we can get
+the probability for ud and the quadrupole moment.
 """
 
 import numpy as np
@@ -12,6 +11,7 @@ import equations as eq
 import get_values as get
 import get_graph as graph
 
+
 def normalize():
     """This function will normalize our function to later get the proper
     results for the probabilities, quadrupole moment, etc.
@@ -19,6 +19,7 @@ def normalize():
     Output:
         Normalization constant
     """
+    
     # Take values from data file
     A, B, C, D = get.ABCD()
     E = get.eigenvalue()
@@ -26,7 +27,7 @@ def normalize():
     # Solve system with proper variables
     wavefs = graph.plot_functions(E, A, B, C, D)
 
-    # Get all values
+    # Get all values for r and wavefunctions
     r_values_out = wavefs[4]
     r_values_in = wavefs[5]
     us_values_out = wavefs[0]
@@ -39,7 +40,7 @@ def normalize():
     us_in_reverse = us_values_in[::-1]
     ud_in_reverse = ud_values_in[::-1]
 
-    # Unify all the results FOR NORMALIZATION
+    # Unify all the results for normalization
     r_values = np.concatenate((r_values_out, r_in_reverse))
     us_values = np.concatenate((us_values_out, us_in_reverse))
     ud_values = np.concatenate((ud_values_out, ud_in_reverse))
@@ -55,11 +56,12 @@ def ud_probability():
     Output:
         ud probability
     """
+    
     # Take values from data file
     A, B, C, D = get.ABCD()
     E = get.eigenvalue()
 
-    # Solve system with proper E value
+    # Solve system with proper variables
     wavefs = graph.plot_functions(E, A, B, C, D)
     
     # Get necessary values
@@ -76,6 +78,7 @@ def ud_probability():
     r_values = np.concatenate((r_values_out, r_in_reverse))
     ud_values = np.concatenate((ud_values_out, ud_in_reverse))
 
+    # Normalize ud
     ud_normlzd = ud_values / normalize()
 
     P_ud = np.trapz(ud_normlzd**2, r_values)
@@ -83,16 +86,17 @@ def ud_probability():
     return P_ud
 
 def quadrupole_mom():
-    """This function will calculate the quadrupole moment of the system.
+    """This function calculates the quadrupole moment of the system.
 
     Output:
         Qd quadrupole moment
     """
+    
     # Take values from data file
     A, B, C, D = get.ABCD()
     E = get.eigenvalue()
 
-    # Solve system with proper E value
+    # Solve system with proper variables
     wavefs = graph.plot_functions(E, A, B, C, D)
 
     # Get all values
@@ -113,7 +117,7 @@ def quadrupole_mom():
     us_values = np.concatenate((us_values_out, us_in_reverse))
     ud_values = np.concatenate((ud_values_out, ud_in_reverse))
 
-    # Normalized functions
+    # Normalize functions
     us_normlzd = us_values / normalize()
     ud_normlzd = ud_values / normalize()
 
@@ -124,7 +128,8 @@ def quadrupole_mom():
     Qd = 0.05 * np.trapz(f, r_values)
 
     return Qd
-    
-print(ud_probability())
-print(quadrupole_mom())
+
+print(f"We got the result: {quadrupole_mom()}e fm² for the quadrupole moment. The experimental value is: 0.286e fm².")
+print(f"We got the result: {ud_probability()} for the probability of ud. The experimental value is around 0.03-0.06.")
+
 
