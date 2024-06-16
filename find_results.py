@@ -1,5 +1,5 @@
 """We define the root finding process to achieve the proper A, B, C and
-D coefficients which will lead us later to the proper E value.
+D coefficients which will lead us later to the proper E energy value.
 
 We take 'radial_equations' function from equations.py, which contains
 the system we must solve. We then solve it inside the 'error_ABCD'
@@ -16,8 +16,8 @@ import equations as eq
 import get_values as get
 
 def error_ABCD(coeffs):
-    """This function find the values of A, B, C and D that for the first
-    E guess value will obey 3 boundary conditions.
+    """This function finds the values of A, B, C and D that for the
+    first E guess value will obey 3 boundary conditions.
 
     We solve the system of equations both forwards and backwards with
     E_guess and compare the results in the midpoint called "cut".
@@ -38,11 +38,11 @@ def error_ABCD(coeffs):
     ini_cond_A = get.initial_conditions_A()
     ini_cond_B = get.initial_conditions_B()
 
-    # Get boundary conditions from data file
+    # Get boundary conditions from the data file
     fin_cond_C = get.boundary_conditions_C()
     fin_cond_D = get.boundary_conditions_D()
     
-    # Ranges for the forward and backward integration
+    # Ranges for the forward and backward integrations
     r_range1 = [get.range_of_radius()[0], cut]
     r_range2 = [get.range_of_radius()[1], cut]
 
@@ -62,7 +62,7 @@ def error_ABCD(coeffs):
     sol_out = A * solA.y + B * solB.y
     sol_in = C * solC.y + D * solD.y
     
-    # Impose conditions of continuituy
+    # Impose conditions of continuity
     error_us1 = sol_out[0][-1] - 3.0
     error_us2 = sol_in[0][-1] - 3.0
     error_ud = sol_out[2][-1] - sol_in[2][-1]
@@ -76,7 +76,7 @@ def error_ABCD(coeffs):
 
 def error_E(E_guess, A, B, C, D):
     """This function will finally find the energy eigenvalue after
-    finding A, B, C and D coefficients. The proper E value will be found
+    getting A, B, C and D coefficients. The proper E value will be found
     by imposing the last continuity condition left.
 
     Inputs:
@@ -84,8 +84,9 @@ def error_E(E_guess, A, B, C, D):
         ABCD: proper coefficients for which we must solve the last
               condition
     Output:
-        Error function for the las continuity condition we must find
+        Error function for the last continuity condition we must find
     """
+    
     # Define the midpoint
     cut = get.range_of_radius()[1] * 0.36
 
@@ -93,11 +94,11 @@ def error_E(E_guess, A, B, C, D):
     ini_cond_A = get.initial_conditions_A()
     ini_cond_B = get.initial_conditions_B()
 
-    # Get boundary conditions from data file
+    # Get boundary conditions from the data file
     fin_cond_C = get.boundary_conditions_C()
     fin_cond_D = get.boundary_conditions_D()
     
-    # Ranges for the forward and backward integration
+    # Ranges for the forward and backward integrations
     r_range1 = [get.range_of_radius()[0], cut]
     r_range2 = [get.range_of_radius()[1], cut]
 
