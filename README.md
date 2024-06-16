@@ -89,3 +89,4 @@ Let us describe the way in which this code works and what is each module used fo
 
 ### Steps taken to reach final results
 
+1. We introduce the model we want for the [potential](potentials.py) part and the desired [initial and boundary conditions](generate_data.py). In our case, we used the fact that $u_s(r) \sim r$ for small r values and $u_d(r) \sim r^3$. This way, we had an easy method to implement the initial conditions for two independent solutions which would be obeying these properties in the initial point. For the final point, we used the fact that both eigenfunctions follow a form $u \sim e^{-kr}$ for large values of r. So we can have an idea of how the wavefunctions will behave in the final value. Furthermore, we expect a higher value for $u_s$, due to the magnitude expected for this function compared to $u_d$.
