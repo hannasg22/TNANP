@@ -75,6 +75,7 @@ This is exactly the formula used in the code to obtain the result of the quarupo
 
 Let us describe the way in which this code works and what is each module used for.
 
+### Structure
 - [generate_data.py](generate_data.py): here we insert the values for our model. Precisely, we will implement: the initial conditions and boundary conditions for both $u_s$ and $u_d$. We will insert two different combinations, because we will make use of the combination of two different solutions to reach the final result obeying all conditions. Also the range of the radius will be present, and the initial guess for the energy eigenvalue. All the data implemented will be saved in [deuteron_values.jsonl](deuteron_values.jsonl).
 - [get_values.py](get_values.py): we can get all data implemented using this module. It takes all the different data from the data files.
 - [potentials.py](potentials.py): this file contains the functions describing both potentials we have defined above.
@@ -82,4 +83,6 @@ Let us describe the way in which this code works and what is each module used fo
 - [equations.py](equations.py): this file contains the form of the system we have to solve. We basically take the two second order differential equations and create a four first order differential equations system.
 - [find_results.py](find_results.py): we define the root functions that we will use in root finding processes implemented in other modules to find the values of A, B, C and D constants and also the E energy eigenvalue.
 - [get_solutions.py](get_solutions.py): using functions in [find_results.py](find_results.py), we apply root finding processes to reach first the proper values of A, B, C and D which will give the continuity of the eigenfunctions in a selected midpoint. Later, with the obtained values, we apply again a root finding function to reach the appropiate value for E energy. All the results will be saved in [values_ABCDE.jsonl](values_ABCDE.jsonl) and they will be extracted through [get_values.py](get_values.py) in other files.
-- 
+- [get_graph.py](get_graph.py): here we write a function which solves the equations with the obtained values through [get_solutions.py](get_solutions.py), which can be extracted through [get_values.py](get_values.py).
+- [plotWFs.py](plotWFs.py): with this value we finally reach the form of the $u_s$ and $u_d$ wavefunctions. To reach it we make use of [get_graph.py](get_graph.py). The two functions are plotted vs. the distance between both nucleons $r (fm)$.
+- [calculate_properties.py](calculate_properties.py): finally we can calculate the probability of the system being in the $u_d$ d-wave state (after normalizing the total wavefunction). Also we reach the Q electric quadrupole moment.
