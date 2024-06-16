@@ -6,8 +6,6 @@ import jsonlines
 
 # Data for our deuteron model
 data_deuteron = [
-    {"Potential": "Central", "Depth_c": 13.888, "Range_c": 2.8},
-    {"Potential": "Tensor", "Depth_t": 10.7632, "Range_t": 2.8},
     {"Initial conditions A": "us wavefunction", "us_0": 0.1, "vs_0": 1.0},
     {"Initial conditions A": "ud wavefunction", "ud_0": 0.001, "vd_0": 0.03},
     {"Initial conditions B": "us wavefunction", "us_0": 0.099, "vs_0": 1.0},
