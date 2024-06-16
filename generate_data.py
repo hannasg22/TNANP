@@ -11,9 +11,9 @@ data_deuteron = [
     {"Initial conditions B": "us wavefunction", "us_0": 0.099, "vs_0": 1.0},
     {"Initial conditions B": "ud wavefunction", "ud_0": 0.0098, "vd_0": 0.03},
     {"Boundary conditions C": "us wavefunction", "us_fin": 0.1061, "vs_fin": -0.0348},
-    {"Boundary conditions C": "Derivatives", "ud_fin": 0.00265, "vd_fin": -0.00087},
+    {"Boundary conditions C": "ud wavefunction", "ud_fin": 0.00265, "vd_fin": -0.00087},
     {"Boundary conditions D": "us wavefunction", "us_fin": 0.1059, "vs_fin": -0.0348},
-    {"Boundary conditions D": "Derivatives", "ud_fin": 0.00263, "vd_fin": -0.00087},
+    {"Boundary conditions D": "ud wavefunction", "ud_fin": 0.00263, "vd_fin": -0.00087},
     {"Range of radius": "Range r", "r_initial": 0.1, "r_final": 10.0},
     {"Energy guess": -2.1}
 ]
