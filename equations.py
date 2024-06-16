@@ -15,8 +15,8 @@ import potentials as pot
 
 
 def radial_equations(r, y, E):
-    """This function defines from our 2 2nd order ODEs  a system of 4
-    1st order ODEs, generated to solve the problem.
+    """This function defines from our two 2nd order ODEs  a system of
+    four 1st order ODEs, generated to solve the problem.
 
     We have two eigenfunctions 'us' and 'ud' representing the l=0 s-wave
     and l=2 d-wave. These are the functions we want to reach.
@@ -27,10 +27,11 @@ def radial_equations(r, y, E):
         We do similarly for ud, defining dud and dvd
 
     Inputs:
-        r: distance between both nucleoons
+        r: distance between both nucleons
         E: energy value
         y: vector with the variables [us, vs, ud, vd]
     """
+    
     # Definition of parameters
     h_bar = 197.327 # Reduced Planck constant
     M = 938.918 # Reduced mass of deuteron
