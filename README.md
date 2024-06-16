@@ -101,6 +101,8 @@ So we must find the values for A, B, C and D which obey:
 $$u_{s_{out}}(R)=u_{s_{out}}(R)=u_s(R), \hspace{1cm} u_{d_{out}}(R)-u_{d_{in}}(R)=0, \hspace{1cm} u_{d_{out}}^{'}(R)-u_{d_{in}}^{'}(R)=0.
 $$
 
-This is precisely defined in [find_results.py](find_results.py), where we describe 4 root functions to find these constants. Later, we will make use of the non-defined continuity condition: $u_{s_{out}}^{'}(R)-u_{s_{in}}^{'}(R)=0$ to finally get the value of the energy which fully describes the system (this is done in the function [error_E](error_E) in [find_results.py](find_results.py)). 
+This is precisely defined in [find_results.py](find_results.py), where we describe 4 root functions in [error_ABCD](error_ABCD) to find these constants. Later, we will make use of the non-defined continuity condition: $u_{s_{out}}^{'}(R)-u_{s_{in}}^{'}(R)=0$ to finally get the value of the energy which fully describes the system (this is done in the function [error_E](error_E) in [find_results.py](find_results.py)). 
 
-5. 
+5. We [get the roots](get_solutions.py) for the equations by applying root-finding methods from SciPy both for a [system of equations](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html) (to get A, B, C and D constants) and for a [single function](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html) (to get the energy E) and [save the results](values_ABCDE.jsonl).
+6. We use the obtained values in [plotWFs.py](plotWFs.py) to plot both wavefunctions using [get_graph.py](get_graph.py) to solve again the system through an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html), but this time with the saved values which make our equations continuous and which are defined in a way that they follow the desired initial and final behaviors.
+7. With the saved values we can now normalize the final wavefunction $\psi_{final}= \aplha u_s(r) + \beta u_d(r)$. After that, we can [calculate](calculate_properties.py) the electric quadrupole moment and the probability of being in the $L=2$ state.
