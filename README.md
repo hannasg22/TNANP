@@ -76,3 +76,8 @@ This is exactly the formula used in the code to obtain the result of the quarupo
 Let us describe the way in which this code works and what is each module used for.
 
 - [generate_data.py](generate_data.py): here we insert the values for our model. Precisely, we will implement: the initial conditions and boundary conditions for both $u_s$ and $u_d$. We will insert two different combinations, because we will make use of the combination of two different solutions to reach the final result obeying all conditions. Also the range of the radius will be present, and the initial guess for the energy eigenvalue. All the data implemented will be saved in [deuteron_values.jsonl](deuteron_values.jsonl).
+- [get_values.py](get_values.py): we can get all data implemented using this module. It takes all the different data from the data files.
+- [potentials.py](potentials.py): this file contains the functions describing both potentials we have defined above.
+- [plotVs.py](plotVs.py): here we get the image of both potentials, to better imagine the form of the interaction terms between the particles.
+- [equations.py](equations.py): this file contains the form of the system we have to solve. We basically take the two second order differential equations and create a four first order differential equations system.
+- 
