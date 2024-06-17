@@ -101,7 +101,7 @@ $$u_{d_{out}}=A u_{d_A}(r)+Bu_{d_B}(r), \hspace{1cm} u_{d_{in}}=C u_{d_C}(r)+Du_
 $$
 
 So we must find the values for A, B, C and D which obey:
-$$u_{s_{out}}(R)=u_{s_{out}}(R)=u_s(R), \hspace{1cm} u_{d_{out}}(R)-u_{d_{in}}(R)=0, \hspace{1cm} u_{d_{out}}^{'}(R)-u_{d_{in}}^{'}(R)=0.
+$$u_{s_{out}}(R)=u_{s_{in}}(R)=u_s(R), \hspace{1cm} u_{d_{out}}(R)-u_{d_{in}}(R)=0, \hspace{1cm} u_{d_{out}}^{'}(R)-u_{d_{in}}^{'}(R)=0.
 $$
 
 This is precisely defined in [find_results.py](find_results.py), where we describe 4 root functions in [error_ABCD](error_ABCD) to find these constants. Later, we will make use of the non-defined continuity condition: $u_{s_{out}}^{'}(R)-u_{s_{in}}^{'}(R)=0$ to finally get the value of the energy which fully describes the system (this is done in the function [error_E](error_E) in [find_results.py](find_results.py)). 
