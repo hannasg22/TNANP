@@ -94,7 +94,10 @@ Let us describe the way in which this code works and what is each module used fo
 3. Once we have the system we want to solve, we must follow a specific procedure to get all our conditions obeyed. Instead of implementing the shooting method directly from the starting point to the final point, we will use the **shooting method to a fitting point**. This means that we will make the solutions be continuous in a midpoint R rather than trying to make the functions obey the final boundary conditions (small changes make the functions diverge due to the exponential behavior for large r values). So, we will solve the 1st order ODEs using an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) implemented by SciPy and get the functions from the initial (ending) point to the midpoint.
 4. Having this situation in mind, since we are facing two coupled second order equations, we will have two linearly independent solutions that are regular in the origin and that obey our initial conditions: $u_{s_A}, u_{d_A}$ and $u_{s_B}, u_{d_B}$. The same will happen in the final point with the boundary conditions. Consequently, we will have:
 
-$$u_{s_{out}}=A u_{s_A}(r)+Bu_{s_B}(r), \hspace{1cm} u_{s_{in}}=C u_{s_C}(r)+Du_{s_D}(r), \hspace{1cm} u_{d_{out}}=A u_{d_A}(r)+Bu_{d_B}(r), \hspace{1cm} u_{d_{in}}=C u_{d_C}(r)+Du_{d_D}(r).
+$$u_{s_{out}}=A u_{s_A}(r)+Bu_{s_B}(r), \hspace{1cm} u_{s_{in}}=C u_{s_C}(r)+Du_{s_D}(r),
+$$
+
+$$u_{d_{out}}=A u_{d_A}(r)+Bu_{d_B}(r), \hspace{1cm} u_{d_{in}}=C u_{d_C}(r)+Du_{d_D}(r).
 $$
 
 So we must find the values for A, B, C and D which obey:
