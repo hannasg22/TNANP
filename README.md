@@ -1,4 +1,4 @@
-# DEUTERON
+# DEUTERON EQUATIONS
 
 ## Goal of the code :dart:
 
