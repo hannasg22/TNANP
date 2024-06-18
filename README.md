@@ -1,6 +1,6 @@
 # DEUTERON
 
-## Goal of the code
+## Goal of the code :dart:
 
 Briefly explained, this code is provided to solve specifically the deuteron equations and get its eigenfunctions and eigenvalue.
 
@@ -95,9 +95,9 @@ Firstly, we will make a brief description of each module following slightly an o
 Let us see what procedure we must follow to develop the code.
 
 1. We introduce the model we want for the [potential](potentials.py) and the desired [initial and boundary conditions](generate_data.py). In our case, we used the fact that $u_s(r) \sim r$ for small r values and $u_d(r) \sim r^3$. This way, we had a method to implement the initial conditions for two independent solutions which would obey these properties in the initial point. For the final point, we used the fact that both eigenfunctions follow the form $u \sim e^{-kr}$ for large r values. So we have an idea of how the wavefunctions will behave in the final value.
-2. We implement the [equations](equations.py) we are trying to solve. As we are working with second order differential equations, it is convenient to convert each on a system on two first order differential equations. Later, this systems will be ready to be solved by many integration methods which work for first order ODEs.
-3. Once we have the system we want to solve, we must follow a specific procedure to get all our conditions obeyed. Instead of implementing the shooting method directly from the starting point to the final point, we will use the **shooting method to a fitting point**. This means that we will make the solutions be continuous in a midpoint R rather than trying to make the functions obey the final boundary conditions (small changes make the functions diverge due to the exponential behavior for large r values). So, we will solve the 1st order ODEs using an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) implemented by SciPy and get the functions from the initial (ending) point to the midpoint.
-4. Having this situation in mind, since we are facing two coupled second order equations, we will have two linearly independent solutions that are regular in the origin and that obey our initial conditions: $u_{s_A}, u_{d_A}$ and $u_{s_B}, u_{d_B}$. The same will happen in the final point with the boundary conditions. Consequently, we will have:
+2. We implement the [equations](equations.py) we must solve. As we are working with second order differential equations, it is convenient to convert each on a system on two first order ODEs. Later, this systems will be ready to be solved by many integration methods which work for first order differential equations.
+3. Once we have inserted the system, we must follow a specific procedure to get all conditions obeyed. Instead of implementing the shooting method directly from the starting point to the final one, we use the **shooting method to a fitting point**. This means that we will make the solutions be continuous in a midpoint R rather than trying to make the functions obey the final boundary conditions (small changes make the functions diverge due to the exponential behaviour for large r values). So, we solve the 1st order ODEs using an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) implemented by SciPy and get the functions from the initial (ending) point to the midpoint.
+4. Having this situation in mind, since we are facing two coupled second order equations, we will have two linearly independent solutions that are regular in the origin and obey our initial conditions: $u_{s_A}, u_{d_A}$ and $u_{s_B}, u_{d_B}$. The same happesn in the final point with the boundary conditions. Consequently, we have:
 
 $$u_{s_{out}}=A u_{s_A}(r)+Bu_{s_B}(r), \hspace{1cm} u_{s_{in}}=C u_{s_C}(r)+Du_{s_D}(r),
 $$
@@ -109,15 +109,24 @@ So we must find the values for A, B, C and D which obey:
 $$u_{s_{out}}(R)=u_{s_{in}}(R)=u_s(R), \hspace{1cm} u_{d_{out}}(R)-u_{d_{in}}(R)=0, \hspace{1cm} u_{d_{out}}^{'}(R)-u_{d_{in}}^{'}(R)=0.
 $$
 
-This is precisely defined in [find_results.py](find_results.py), where we describe 4 root functions in [error_ABCD](error_ABCD) to find these constants. Later, we will make use of the non-defined continuity condition: $u_{s_{out}}^{'}(R)-u_{s_{in}}^{'}(R)=0$ to finally get the value of the energy which fully describes the system (this is done in the function [error_E](error_E) in [find_results.py](find_results.py)). 
+This is precisely defined in [find_results.py](find_results.py), where we describe 4 root functions in [error_ABCD](error_ABCD) to find these constants. Later, we make use of the still non-defined continuity condition: $u_{s_{out}}^{'}(R)-u_{s_{in}}^{'}(R)=0$ to finally get the value of the energy fully describing the system (this is done in the function [error_E](error_E) in [find_results](find_results.py)). 
 
 5. We [get the roots](get_solutions.py) for the equations by applying root-finding methods from SciPy both for a [system of equations](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html) (to get A, B, C and D constants) and for a [single function](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html) (to get the energy E) and [save the results](values_ABCDE.jsonl).
-6. We use the obtained values in [plotWFs.py](plotWFs.py) to plot both wavefunctions using [get_graph.py](get_graph.py) to solve again the system through an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html), but this time with the saved values which make our equations continuous and which are defined in a way that they follow the desired initial and final behaviors.
-7. With the saved values we can now normalize the final wavefunction $\psi_{final}= \alpha u_s(r) + \beta u_d(r)$. After that, we can [calculate](calculate_properties.py) the electric quadrupole moment and the probability of being in the $L=2$ state.
+6. We use the obtained values in [plotWFs](plotWFs.py) to plot both wavefunctions using [get_graph](get_graph.py) to solve again the system through an [integration method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html), but this time with the saved appropriate values.
+7. With the saved results we can now normalize the final wavefunction $\psi_{final}= \alpha u_s(r) + \beta u_d(r)$. After that, we [calculate](calculate_properties.py) the Q electric quadrupole moment and the probability of being in the $L=2$ D-state.
 
 
 ### Needed libraries :hammer_and_wrench:
 
+In order to get the whole procedure done, the libraries required will be:
+- [SciPy](https://scipy.org)
+- [NumPy](https://numpy.org)
+- [Matplotlib](https://matplotlib.org)
+- [Seaborn](https://seaborn.pydata.org)
+- [JSONLines](https://jsonlines.org)
+
+
 ### How to get straightforwardly the solutions :fast_forward:
 
+If we want to get the final results of this code straightforwardly, we just must be sure that all the libraries needed have been correctly installed. After that, we can download the whole code and run module [plotWFs](plotWFs.py) to reach the graph of the wavefunctions. Also, to obtain the values for Q and $u_d$ probability, we just must run the [calculate_properties](calculate_properties.py) file.
 
