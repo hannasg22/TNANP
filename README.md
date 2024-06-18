@@ -10,7 +10,7 @@ In order to find the results, a particular model for the potential is implemente
 
 With the aim of better understanding what it is done in this code, let us introduce the main theoretical concepts.
 
-### Main idea
+### Main idea :bulb:
 
 The deuteron is the **only bound state of two nucleons** and its bound is weak, therefore it only exists in the ground state. It is formed by one proton and one neutron and the nuclear force between them has the next main properties: 
 - Attractive: forms a bound state
