@@ -71,7 +71,7 @@ $$
 
 This is exactly the formula used in the code to obtain the result of the quarupole moment, which will also work as a proof of the correctness of the model used.
 
-## How to use the code
+## How to use the code 📖
 
 Let us describe the way in which this code works and what is each module used for.
 
