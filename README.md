@@ -128,5 +128,10 @@ In order to get the whole procedure done, the libraries required will be:
 
 ### How to get straightforwardly the solutions :fast_forward:
 
-If we want to get the final results of this code straightforwardly, we just must be sure that all the libraries needed have been correctly installed. After that, we can download the whole code and run module [plotWFs](plotWFs.py) to reach the graph of the wavefunctions. Also, to obtain the values for Q and $u_d$ probability, we just must run the [calculate_properties](calculate_properties.py) file.
+If we want to get the final results of this code straightforwardly, we just must be sure that all the libraries needed have been correctly installed. After that, we can download the whole code and run module [plotWFs](plotWFs.py) to reach the graph of the wavefunctions. We should get one picture like
+
+<img src="images/FourthResult.png" alt="Plot obtained with the actual code." width="600">
+
+
+Also, to obtain the values for Q and $u_d$ probability, we just must run the [calculate_properties](calculate_properties.py) file and the obtained results will be printed.
 
